@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    font-family: 'Playfair Display', serif;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ===== КОНФЕТТИ (canvas) ===== */
+#confettiCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ===== КОНТЕЙНЕР ===== */
+.container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ===== РАМКА С ПЕРЕЛИВАЮЩЕЙСЯ ГРАНИЦЕЙ ===== */
+.frame {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    padding: 50px 60px;
+    border-radius: 40px;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    border: 5px solid transparent;
+    animation: borderGlow 3s ease-in-out infinite alternate;
+    position: relative;
+}
+
+@keyframes borderGlow {
+    0% {
+        border-color: #ff6b6b;
+        box-shadow: 0 0 30px #ff6b6b66;
+    }
+    20% {
+        border-color: #feca57;
+        box-shadow: 0 0 30px #feca5766;
+    }
+    40% {
+        border-color: #48dbfb;
+        box-shadow: 0 0 30px #48dbfb66;
+    }
+    60% {
+        border-color: #1dd1a1;
+        box-shadow: 0 0 30px #1dd1a166;
+    }
+    80% {
+        border-color: #a29bfe;
+        box-shadow: 0 0 30px #a29bfe66;
+    }
+    100% {
+        border-color: #fd79a8;
+        box-shadow: 0 0 30px #fd79a866;
+    }
+}
+
+/* ===== ПЕРЕЛИВАЮЩАЯСЯ НАДПИСЬ HAPPY BIRTHDAY ===== */
+.birthday-title {
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: 'fantasy', Trattatello;
+    background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1, #a29bfe, #fd79a8);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbowText 4s linear infinite;
+    margin-bottom: 10px;
+}
+
+@keyframes rainbowText {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+/* ===== ОСТАЛЬНОЙ ТЕКСТ ===== */
+.subtext {
+    font-size: 28px;
+    font-weight: 700;
+    color: #00f7f3;
+    text-shadow: 0 0 20px #ff6b6baa;
+    margin-bottom: 15px;
+}
+
+.message {
+    font-size: 18px;
+    color: #bf8665;
+    line-height: 1.8;
+    font-weight: 300;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* ===== СМАЙЛИКИ ВНИЗУ (двигаются вверх-вниз) ===== */
+.emojis {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    z-index: 2;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.emojis span {
+    font-size: 34px;
+    display: inline-block;
+    animation: float 2s ease-in-out infinite;
+}
+
+/* Разная задержка для каждого смайлика */
+.emojis span:nth-child(1) {
+    animation-delay: 0s;
+}
+.emojis span:nth-child(2) {
+    animation-delay: 0.25s;
+}
+.emojis span:nth-child(3) {
+    animation-delay: 0.5s;
+}
+.emojis span:nth-child(4) {
+    animation-delay: 0.75s;
+}
+.emojis span:nth-child(5) {
+    animation-delay: 1s;
+}
+.emojis span:nth-child(6) {
+    animation-delay: 1.25s;
+}
+.emojis span:nth-child(7) {
+    animation-delay: 1.5s;
+}
+.emojis span:nth-child(8) {
+    animation-delay: 1.75s;
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-18px);
+    }
+}
